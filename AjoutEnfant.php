@@ -5,14 +5,29 @@
     <title>Ajout Enfant crèche</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
-<body>
-    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-            <a class="lienRetour" href="index.php">Retour Page d'accueil</a>
-            <h1>Ajouter</h1>
-            <a class="lienModif" href="ModifierEnfant.php">Modifier un Enfant</a>
-    </nav>
-
-    <div id="formulaireAjout">
+<body style="background-color: #5D7585;">
+    <div class="header">
+        <h3 style="color: orange; text-align: center;">Crèche</h3>
+        <div class="btnHeader" style="display: flex; justify-content: space-around; margin-top: 2%;">
+            <div>
+                <form action="index.php" method="POST">
+                    <input type="submit" class="btn btn-warning" value="Retour page d'accueil">
+                </form>
+            </div>
+            <div>
+                <form action="ListeEnfant.php" method="POST">
+                    <input type="submit" class="btn btn-warning" value="Retour liste des enfants">
+                </form>
+            </div>
+            <div>
+                <form action="#" method="POST">
+                    <input type="submit" class="btn btn-danger" value="Déconnexion">
+                </form>
+            </div>
+        </div>
+    </div>
+ 
+    <div id="formulaireAjout" style="background-color: #E6E6FA; text-align: center; margin-top: 8%; border: solid 1px;">
         <form enctype="multipart/form-data" method="POST" ACTION="">
             <div class="element">
                 <label>Prénom :</label>
