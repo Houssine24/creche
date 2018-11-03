@@ -28,6 +28,7 @@
   </div>
   <!-- <h1>Liste des enfants</h1> -->
   <?php
+  require ('SupprimerActivite.php');
     // Connexion à la base de données
   try
   {
@@ -37,22 +38,38 @@
   {
     die('Erreur : '.$e->getMessage());
   }
-
-
     // On récupère la liste des activités
   $req = $bdd->query('SELECT * FROM  activity WHERE activity_id');
   ?>
-
-
   <div class="news  col-sm-9" style="margin-top: 5%; text-align: center;">
-    <table class="table table-striped" style="background-color: #E6E6FA; margin-left: 15%;">    
+    <table class="table table-striped" style="background-color: #E6E6FA; margin-left: 15%;">
+      <thead>
+        <th>Nom de l'activité</th>
+        <th>Type d'activité</th>
+        <th>Nombre d'enfants max</th>
+        <th>Option</th>
+    </thead> 
       <?php
       while ($donnees = $req->fetch())
       {
-       echo "<tr><td> NOM : " . $donnees['activity_name'] . "</td></tr>";
-       echo "<tr><td> TYPE : " . $donnees['activity_type'] . "</td></tr>";
-       echo "<tr><td> NOMBRE MAX D'ENFANTS : " . $donnees['activity_number_max_child'] . "</td></tr>";
-       echo "<tr><td><button class='modif btn btn-success'>Modifier</button> <button class='supprime btn btn-danger' style='margin-left: 80%;'>Supprimer</button></td></tr>";
+       echo "
+              <tr>
+                <td>" . $donnees['activity_name'] . "</td>
+                <td>" . $donnees['activity_type'] . "</td>
+                <td>" . $donnees['activity_number_max_child'] . "</td>
+                <td>
+                  <form method='post' class='deleteform'>
+                    <input type='hidden' name='activity_id' value=". $donnees['activity_id'] . ">
+                    <input type='submit' name='supprimer' class='supprimer btn btn-danger' value='supprimer'>
+                  </form>
+                </td>
+                <td>
+                  <form method='post' action='ModifierActivite.php' class='deleteform'>
+                    <input type='hidden' name='activity_id' value=". $donnees['activity_id'] . ">
+                    <input type='submit' name='modifier' class='modifier btn btn-success' value='modifier'>
+                  </form>
+                </td>
+              </tr>";
      } 
         // Fin de la boucle.
      $req->closeCursor();

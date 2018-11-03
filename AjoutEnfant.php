@@ -28,13 +28,13 @@
     </div>
  
     <div id="formulaireAjout" style="background-color: #E6E6FA; text-align: center; margin-top: 8%; border: solid 1px;">
-        <form enctype="multipart/form-data" method="POST" ACTION="">
+        <form method="POST">
             <div class="element">
-                <label>Prénom :</label>
+                <label>prénom :</label>
                 <input type="text" name="children_firstname">
             </div>
             <div class="element"> 
-                <label>Nom :</label>
+                <label>nom :</label>
                 <input type="text" name="children_lastname"></input>
             </div>
             <div class="element">
@@ -42,17 +42,33 @@
                 <input type="date" name="children_birthday">
             </div>
             <div class="element">
-                <label>Adresse :</label>
+                <label>adresse :</label>
                 <input type="text" name="children_adress">
             </div>
             <div class="element">
-                <label>Contacts parents :</label>
+                <label>contacts parents :</label>
                 <input type="text" name="children_parents_contact">
             </div>
             <div class="element">
-                <label>Remarque éventuelle :</label>
+                <label>remarque éventuelle :</label>
                 <input type="text" name="children_remarks">
+            </div> 
+           <!--  <div class="element">
+                <label>dates d'accueil :</label>
+                <input type="date" name="ch_start_date">
             </div>
+            <div class="element"> 
+                <label>date fin d'accueil :</label>
+                <input type="date" name="ch_end_date"></input>
+            </div>
+            <div class="element">
+                <label>numéro de chambre :</label>
+                <input type="date" name="ch_room">
+            </div>
+            <div class="element">
+                <label>numéro de lit :</label>
+                <input type="text" name="ch_bed">
+            </div> -->
             <div class="element">
                 <button  class="button" name="submit" type="submit" value="Envoyer">Envoyer</button>
             </div>
@@ -78,8 +94,28 @@ if(!empty($_POST['submit'])){
                 ':children_parents_contact' => $_POST['children_parents_contact'],
                 ':children_remarks' => $_POST['children_remarks']
             ));
-            header('Location: index.php');
+            header('Location: ListeEnfant.php');
         }
+        // if(!empty($_POST['submit']))
+        // {
+        //     if (!empty($_POST['ch_start_date']) && !empty($_POST['ch_end_date']) && !empty($_POST['ch_room']) && !empty($_POST['ch_bed']))
+        //     {
+        //         try 
+        //         {
+        //             //Pour éviter les erreur.
+        //             $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
+        //             // Connexion à la base de données.
+        //             $bdd = new PDO('mysql:host=localhost;dbname=creche_laravel;charset=utf8', 'simoccauch30','mamanjetaime4812', $pdo_options);
+        //             //Ajout du nouvel enfant dans la table Children.
+        //             $req = $bdd->prepare('INSERT INTO childcare_history(ch_start_date, ch_end_date, ch_room, ch_bed)
+        //                 VALUES(:ch_start_date, :ch_end_date, :ch_room, :ch_bed)');
+        //             $req->execute(array(
+        //                 ':ch_start_date' => $_POST['ch_start_date'],
+        //                 ':ch_end_date' => $_POST['ch_end_date'],
+        //                 ':ch_room' => $_POST['ch_room'],
+        //                 ':ch_bed' => $_POST['ch_bed']
+        //             ));
+        //         }
         catch (Exception $e){
             die('Erreur : ' . $e->getMessage());
             }

@@ -63,7 +63,7 @@ if(!empty($_POST['submit'])){
                 ':activity_type' => $_POST['activity_type'],
                 ':activity_number_max_child' => $_POST['activity_number_max_child']
             ));
-            header('Location: index.php');
+            header('Location: ListeActivite.php');
         }
         catch (Exception $e){
             die('Erreur : ' . $e->getMessage());
