@@ -48,6 +48,7 @@ if(isset($_POST['modifier']))
     {
 		echo 	"<div style='margin-top: 5%;'>
 					<form method='post'>
+						<tr><td><input type='hidden' name='children_id' value=". $donnees['children_id'] . "></tr></td>
 						<tr><td><textarea name='children_firstname'>" . $donnees['children_firstname'] . "</textarea></td>
 						<td><textarea name='children_lastname'>" . $donnees['children_lastname'] . "</textarea></td>
 						<td><input type='date' name='children_birthday' value=" . $donnees['children_birthday'] . "></td>
@@ -61,7 +62,7 @@ if(isset($_POST['modifier']))
 }
 
 if(isset($_POST['submit']))
-{      
+{     
 	$id_modif = $_POST['children_id'];
 	$firstname = $_POST['children_firstname'];
 	$lastname = $_POST['children_lastname'];
@@ -76,9 +77,8 @@ if(isset($_POST['submit']))
   		children_adress = '".$adress."',
   		children_parents_contact = '".$parents_contact."',
   		children_remarks = '".$remarks."' WHERE children_id = " . $id_modif);
-
+	header('Location: ListeEnfant.php');
 }
-
 ?>
 
 </body>

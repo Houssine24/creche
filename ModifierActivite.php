@@ -48,6 +48,7 @@ if(isset($_POST['modifier']))
     {
 		echo 	"<div style='margin-top: 5%;'>
 					<form method='post'>
+						<tr><td><input type='hidden' name='activity_id' value=". $donnees['activity_id'] . "></tr></td>
 						<tr><td><textarea name='activity_name'>" . $donnees['activity_name'] . "</textarea></td>
 						<td><textarea name='activity_type'>" . $donnees['activity_type'] . "</textarea></td>
 						<td><textarea name='activity_number_max_child'>" . $donnees['activity_number_max_child'] . "</textarea></td>
@@ -67,6 +68,7 @@ if(isset($_POST['submit']))
 		activity_name = '".$name."',
   		activity_type = '".$type."',
   		activity_number_max_child = '".$number."' WHERE activity_id = " . $id_modif);
+	header('Location: ListeActivite.php');
 }
 
 ?>
